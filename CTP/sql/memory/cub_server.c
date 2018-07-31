@@ -51,7 +51,17 @@ main (int argc, char *argv[])
   pid_t pid;
   char filename[100];
   ctp_home = getenv ("CTP_HOME");
+  printf("CTP_HOME=%s\n", ctp_home);
+  if(!ctp_home)
+    {
+      printf("WARNING environment variable CTP_HOME=???\n");
+    }
   p = getenv ("VALGRIND_HOME");
+  printf("VALGRIND_HOME=%s\n", p);
+  if(!p)
+    {
+      printf("WARNING environment variable VALGRIND_HOME=???\n");
+    }
   strcpy (valgrind_path, p);
   strcat (valgrind_path, "/bin/valgrind");
 
@@ -71,7 +81,7 @@ main (int argc, char *argv[])
   const char *option1 = "--trace-children=yes";
   const char *option2 = "--leak-check=full";
   const char *option3 = "--error-limit=no";
-  const char *option4 = "--date-time=yes";
+  const char *option4 = "--time-stamp=yes";
   //const char *option4 = "--expensive-definedness-checks=yes";
   const char *option5 = "--track-origins=yes";
   const char *option6 = "--num-callers=30"; 
